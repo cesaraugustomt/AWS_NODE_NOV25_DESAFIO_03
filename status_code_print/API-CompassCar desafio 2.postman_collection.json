@@ -1,0 +1,897 @@
+{
+	"info": {
+		"_postman_id": "bf310f95-ebe5-46cd-8bec-03b4a70f38e8",
+		"name": "API-CompassCar desafio 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32639560"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"Test\",\r\n    \"email\": \"test2@gmail.com\",\r\n    \"password\": \"1234567\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"user"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "full_name",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "createdAt",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "usuario",
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "orderDirection",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "deletedAt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user ",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"DB Louis\",\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"newPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/user/300eb727-3e17-4297-9e23-2fd19645dd3b1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"300eb727-3e17-4297-9e23-2fd19645dd3b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/user/bf03bedb-da9d-4e76-8eab-9b7ffc7c1e70",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"bf03bedb-da9d-4e76-8eab-9b7ffc7c1e70"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar user por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/user/300eb727-3e17-4297-9e23-2fd19645dd3b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"300eb727-3e17-4297-9e23-2fd19645dd3b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "client",
+			"item": [
+				{
+					"name": "create client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Maria Souza\",\r\n   \"birthday\": \"1990-08-15\",\r\n   \"email\": \"maria.souza@example.com\",\r\n   \"phone\": \"123456789\",\r\n   \"cpf\": \"78113959246\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/client",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"client"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/client",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"client"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "full_name",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "createdAt",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "usuario",
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "orderDirection",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "deletedAt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\": \"Maria Souza\",\r\n   \"birthday\": \"1990-08-15\",\r\n   \"email\": \"maria.souza@example.com\",\r\n   \"phone\": \"123456789\",\r\n   \"cpf\": \"78113959246\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/client/030de8e8-915f-4be4-bf5c-c8692594224f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"client",
+								"030de8e8-915f-4be4-bf5c-c8692594224f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/client/030de8e8-915f-4be4-bf5c-c8692594224f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"client",
+								"030de8e8-915f-4be4-bf5c-c8692594224f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar client por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/client/f70eda38-8f8d-4451-bd7d-f551aff69732",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"client",
+								"f70eda38-8f8d-4451-bd7d-f551aff69732"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "car",
+			"item": [
+				{
+					"name": "create car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"plate\": \"ABC1234\",\r\n   \"brand\": \"Tesla\",\r\n   \"model\": \"Model S\",\r\n   \"km\": 20000,\r\n   \"year\": 2021,\r\n   \"price\": 800000,\r\n   \"status\": \"ativo\",\r\n   \"items\": [ \"autopilot\", \"câmbio automático\", \"câmera de ré\", \"ar-condicionado\" ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/car",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"car"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/car",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"car"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "full_name",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "createdAt",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "usuario",
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "orderDirection",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "deletedAt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"full_name\": \"DB Louis\",\r\n    \"email\": \"louis33@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"newPassword\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/car/1153a0a0-25a5-4e0e-a297-79023f9669481",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"car",
+								"1153a0a0-25a5-4e0e-a297-79023f9669481"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete car",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/car/1153a0a0-25a5-4e0e-a297-79023f966948",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"car",
+								"1153a0a0-25a5-4e0e-a297-79023f966948"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar car por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/car/efd1bf4b-dff5-4bed-ad07-349d57f2f146",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"car",
+								"efd1bf4b-dff5-4bed-ad07-349d57f2f146"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n   \"carId\": \"efd1bf4b-dff5-4bed-ad07-349d57f2f146\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "orderBy",
+									"value": "full_name",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "createdAt",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "usuario",
+									"disabled": true
+								},
+								{
+									"key": "isDeleted",
+									"value": "true",
+									"disabled": true
+								},
+								{
+									"key": "orderDirection",
+									"value": "DESC",
+									"disabled": true
+								},
+								{
+									"key": "orderBy",
+									"value": "deletedAt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"cep\": \"59650-000\",\r\n   \"status\": \"Aprovado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8686/api/v1/order/87d25a4a-f77a-43af-a7fb-81efe02e7241",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"87d25a4a-f77a-43af-a7fb-81efe02e7241"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/order/b65324d8-c013-496b-8764-db62c48abfb1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"b65324d8-c013-496b-8764-db62c48abfb1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar order por id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8686/api/v1/order/b65324d8-c013-496b-8764-db62c48abfb1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8686",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"b65324d8-c013-496b-8764-db62c48abfb1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
