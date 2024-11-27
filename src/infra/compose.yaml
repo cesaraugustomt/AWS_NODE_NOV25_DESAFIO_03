@@ -15,7 +15,7 @@ services:
       timeout: 5s
       retries: 1
       start_period: 30s
-  volumes:
+    volumes:
       - mariadb_data:/var/lib/mysql
 
 networks:
