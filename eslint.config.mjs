@@ -4,6 +4,7 @@ import tseslint from '@typescript-eslint/eslint-plugin';
 import parser from '@typescript-eslint/parser';
 import prettier from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
+import jestPlugin from 'eslint-plugin-jest';
 
 export default [
   {
@@ -15,13 +16,16 @@ export default [
         sourceType: 'module',
       },
       globals: globals.node,
+      ...globals.jest,
     },
     plugins: {
       '@typescript-eslint': tseslint,
       prettier: prettier,
+      jest: jestPlugin,
     },
     rules: {
       ...tseslint.configs.recommended.rules,
+      ...jestPlugin.configs.recommended.rules,
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-unused-vars': [
         'warn',
