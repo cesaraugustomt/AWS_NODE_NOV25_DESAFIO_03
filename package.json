@@ -5,6 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "dev": "npm run services:up && nodemon --exec ts-node ./src/index.ts",
+    "start-dev": "npm run services:up && npm run wait-for-mariadb && npm run migration:run && npm run seed:run",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write 'src/**/*.{ts,js,json,md}'",
@@ -21,8 +22,8 @@
     "migration:run": "npm run typeorm migration:run -- -d ./src/infra/data-source.ts",
     "seed:run": "ts-node ./node_modules/typeorm-extension/bin/cli.cjs seed:run -d ./src/infra/data-source.ts",
     "test": "jest --runInBand",
-    "test:watch": "jest --watchAll --runInBand"
-
+    "test:watch": "jest --watchAll --runInBand",
+    "wait-for-mariadb": "node src/infra/scripts/wait-for-mariadb.ts"
   },
   "keywords": [],
   "author": "",
