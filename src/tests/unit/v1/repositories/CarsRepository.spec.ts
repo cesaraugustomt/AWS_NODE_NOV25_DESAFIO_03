@@ -39,7 +39,7 @@ describe("CarsRepository", () => {
       model: "ModelY",
       km: 10000,
       year: 2020,
-      price: 20000,
+      price: 22000,
       status: "available",
       items: ["item1", "item2"],
     };
