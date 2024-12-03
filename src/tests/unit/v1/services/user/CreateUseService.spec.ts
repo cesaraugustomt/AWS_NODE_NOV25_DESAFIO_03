@@ -24,7 +24,7 @@ describe("CreateUserService", () => {
   it("should throw an error if email is missing", async () => {
     await expect(
       createUserService.execute({
-        full_name: "John Doe",
+        full_name: "User One",
         email: "",
         password: "password123",
       })
@@ -34,7 +34,7 @@ describe("CreateUserService", () => {
   it("should throw an error if email is invalid", async () => {
     await expect(
       createUserService.execute({
-        full_name: "John Doe",
+        full_name: "User One",
         email: "invalidEmail",
         password: "password123",
       })
@@ -54,7 +54,7 @@ describe("CreateUserService", () => {
   it("should throw an error if password is missing", async () => {
     await expect(
       createUserService.execute({
-        full_name: "John Doe",
+        full_name: "User One",
         email: "user@example.com",
         password: "",
       })
@@ -64,7 +64,7 @@ describe("CreateUserService", () => {
   it("should throw an error if user already exists", async () => {
     const mockExistingUser = {
       email: "user@example.com",
-      full_name: "John Doe",
+      full_name: "User One",
       password: "hashedPassword",
     };
 
@@ -72,7 +72,7 @@ describe("CreateUserService", () => {
 
     await expect(
       createUserService.execute({
-        full_name: "John Doe",
+        full_name: "User One",
         email: "user@example.com",
         password: "password123",
       })
@@ -81,7 +81,7 @@ describe("CreateUserService", () => {
 
   it("should create a new user if all fields are valid", async () => {
     const mockNewUser = {
-      full_name: "John Doe",
+      full_name: "User One",
       email: "user@example.com",
       password: "hashedPassword",
       createdAt: new Date(),
@@ -94,13 +94,13 @@ describe("CreateUserService", () => {
     (usersRepository.save as jest.Mock).mockResolvedValue(mockNewUser);
 
     const result = await createUserService.execute({
-      full_name: "John Doe",
+      full_name: "User One",
       email: "user@example.com",
       password: "password123",
     });
 
     expect(result).toEqual({
-      full_name: "John Doe",
+      full_name: "User One",
       email: "user@example.com",
       createdAt: mockNewUser.createdAt,
       deletedAt: mockNewUser.deletedAt,
