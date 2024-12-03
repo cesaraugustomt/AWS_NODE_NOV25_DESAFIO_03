@@ -51,9 +51,9 @@ describe("CreateOrderService", () => {
 
     const mockClient: Client = {
       id: "1",
-      name: "John Doe",
+      name: "One User",
       cpf: "12345678901",
-      email: "johndoe@example.com",
+      email: "oneuser@example.com",
       phone: "987654321",
       birthday: new Date("1980-01-01"),
       createdAt: new Date(),
