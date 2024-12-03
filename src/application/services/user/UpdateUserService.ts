@@ -1,8 +1,8 @@
-import { compare, hash } from 'bcryptjs';
-import { UpdateUserDto } from '../../../http/dtos/UpdateUser.dto';
-import { AppDataSource } from '../../../infra/data-source';
-import User from '../../../domain/entities/User';
-import { IsNull } from 'typeorm';
+import { compare, hash } from "bcryptjs";
+import { UpdateUserDto } from "../../../http/dtos/UpdateUser.dto";
+import { AppDataSource } from "../../../infra/data-source";
+import User from "../../../domain/entities/User";
+import { IsNull } from "typeorm";
 
 export class UpdateUserService {
   async execute({
@@ -12,27 +12,27 @@ export class UpdateUserService {
     password,
     newPassword,
   }: UpdateUserDto) {
-    if (!id) throw new Error('ID não preenchido');
-    if (!password) throw new Error('Senha atual não preenchida');
+    if (!id) throw new Error("ID não preenchido");
+    if (!password) throw new Error("Senha atual não preenchida");
 
     const userRepository = AppDataSource.getRepository(User);
 
     const user = await userRepository.findOne({ where: { id } });
-    if (!user) throw new Error('Usuário não existe');
+    if (!user) throw new Error("Usuário não existe");
+
+    if (user.deletedAt !== null) {
+      throw new Error("Não é possível atualizar um usuário excluído");
+    }
+
+    if (!user.password || !(await compare(password, user.password))) {
+      throw new Error("Senha atual incorreta");
+    }
 
     if (email && email !== user.email) {
       const existingUser = await userRepository.findOne({
         where: { email, deletedAt: IsNull() },
       });
-      if (existingUser) throw new Error('Email já está em uso');
-    }
-
-    if (user.deletedAt !== null) {
-      throw new Error('Não é possível atualizar um usuário excluído');
-    }
-
-    if (!user.password || !(await compare(password, user.password))) {
-      throw new Error('Senha atual incorreta');
+      if (existingUser) throw new Error("Email já está em uso");
     }
 
     const updatedPassword = newPassword
@@ -47,7 +47,7 @@ export class UpdateUserService {
     await userRepository.save(user);
 
     return {
-      message: 'Registro atualizado com sucesso',
+      message: "Registro atualizado com sucesso",
     };
   }
 }

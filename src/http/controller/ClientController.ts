@@ -1,13 +1,13 @@
-import { Request, Response } from 'express';
-import CreateClientService from '../../application/services/client/CreateClientService';
-import { v4 as uuidv4 } from 'uuid';
-import ReadClientService from '../../application/services/client/ReadClientService';
-import ListClientService from '../../application/services/client/ListClientService';
-import { ListClientParams } from '../../application/params/ListClientParams.type';
-import UpdateClientService from '../../application/services/client/UpdateClientService';
-import DeleteClientService from '../../application/services/client/DeleteClientService';
-import { isValidCPF } from '../../infra/config/cpfValidator';
-import { emailRegex } from '../../infra/config/regex';
+import { Request, Response } from "express";
+import CreateClientService from "../../application/services/client/CreateClientService";
+import { v4 as uuidv4 } from "uuid";
+import ReadClientService from "../../application/services/client/ReadClientService";
+import ListClientService from "../../application/services/client/ListClientService";
+import { ListClientParams } from "../../application/params/ListClientParams.type";
+import UpdateClientService from "../../application/services/client/UpdateClientService";
+import DeleteClientService from "../../application/services/client/DeleteClientService";
+import { isValidCPF } from "../../infra/config/cpfValidator";
+import { emailRegex } from "../../infra/config/regex";
 
 class ClientController {
   async create(req: Request, res: Response): Promise<Response> {
@@ -22,17 +22,17 @@ class ClientController {
         if (!client) {
           return res.status(400).json({
             message:
-              'Client creation failed: invalid data format or CPF/email already exists.',
+              "Client creation failed: invalid data format or CPF/email already exists.",
           });
         }
 
         return res.status(200).json(client);
       } else {
-        return res.status(400).json({ message: 'Invalid cpf' });
+        return res.status(400).json({ message: "Invalid cpf" });
       }
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -40,15 +40,14 @@ class ClientController {
     try {
       const readClientService = new ReadClientService();
       const { id } = req.params;
-      console.log(req.params);
       const client = await readClientService.execute(id);
       if (!client) {
-        return res.status(404).json({ message: 'Client not found' });
+        return res.status(404).json({ message: "Client not found" });
       }
       return res.status(200).json(client);
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -62,7 +61,7 @@ class ClientController {
       return res.status(200).json(result);
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 
@@ -76,13 +75,13 @@ class ClientController {
 
       if (cpf) {
         if (!isValidCPF(cpf)) {
-          return res.status(400).json({ message: 'Invalid cpf' });
+          return res.status(400).json({ message: "Invalid cpf" });
         }
       }
 
       if (email) {
         if (!emailRegex.test(email)) {
-          return res.status(400).json({ message: 'Invalid email' });
+          return res.status(400).json({ message: "Invalid email" });
         }
       }
 
@@ -91,13 +90,13 @@ class ClientController {
       if (!client) {
         return res
           .status(404)
-          .json({ message: 'Client not found or is already deleted' });
+          .json({ message: "Client not found or is already deleted" });
       }
 
       return res.status(200).json(client);
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
   async delete(req: Request, res: Response): Promise<Response> {
@@ -110,13 +109,13 @@ class ClientController {
       if (!client) {
         return res
           .status(404)
-          .json({ message: 'Client not found or is already deleted' });
+          .json({ message: "Client not found or is already deleted" });
       }
 
-      return res.status(200).json({ message: 'Client deleted successfully' });
+      return res.status(200).json({ message: "Client deleted successfully" });
     } catch (error) {
       console.error(error);
-      return res.status(500).json({ message: 'Internal Server Error' });
+      return res.status(500).json({ message: "Internal Server Error" });
     }
   }
 }

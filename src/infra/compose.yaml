@@ -4,7 +4,7 @@ services:
     container_name: mariadb_container
     restart: unless-stopped
     env_file:
-      - ../../.env
+      - ../../.env.development
     ports:
       - '${MYSQL_PORT:-3306}:3306'
     networks:
@@ -15,7 +15,7 @@ services:
       timeout: 5s
       retries: 1
       start_period: 30s
-  volumes:
+    volumes:
       - mariadb_data:/var/lib/mysql
 
 networks:
