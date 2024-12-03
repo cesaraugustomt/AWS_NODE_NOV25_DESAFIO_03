@@ -2,20 +2,17 @@
   "compilerOptions": {
     "target": "ES2020",
     "lib": ["ES2020"],
+    "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
-    "baseUrl": "./",
-    // "paths": {
-    //   "@infra/*": ["src/infra/*"],
-    //   "@services/*": ["src/application/services/*"],
-    //   "@params/*": ["src/application/params/*"],
-    //   "@dtos/*": ["src/http/dtos/*"],
-    //   "@entities/*": ["src/domain/entities/*"],
-    //   "@repositories/*": ["src/domain/repositories/*"]
-    // },
+    "baseUrl": "./src",
+    "paths": {
+      "@services/*": ["application/services/*"],
+      "@repositories/*": ["domain/repositories/*"]
+    },
     "outDir": "./dist",
     "rootDir": "./src",
     "resolveJsonModule": true,
@@ -23,7 +20,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "strictPropertyInitialization": false,
- 
+    "skipLibCheck": true
+
   }
   
 }

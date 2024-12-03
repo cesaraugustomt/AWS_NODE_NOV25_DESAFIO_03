@@ -1,18 +1,34 @@
 name: Automated Tests
 
-on: pull_request
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   jest:
-    name: Jest Ubuntu
+    name: Run Jest Tests on Ubuntu
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: "20.17.0"
+          cache: "npm"
 
-      - run: npm ci
+      - name: Install Dependencies
+        run: npm ci
 
-      - run: npm run test
+      - name: TypeScript Compilation Check
+        run: npx tsc --noEmit
+        env:
+          CI: true
+
+      - name: Run Tests
+        run: npm run test
+        env:
+          CI: true
