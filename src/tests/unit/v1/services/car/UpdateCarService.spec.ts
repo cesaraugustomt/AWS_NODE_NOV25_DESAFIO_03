@@ -2,9 +2,8 @@ import { UpdateCarService } from "../../../../../application/services/car/Update
 import { CarsRepository } from "../../../../../domain/repositories/CarsRepository";
 import { UpdateCarDTO } from "../../../../../http/dtos/UpdateCar.dto";
 import { Car } from "../../../../../domain/entities/Car";
-import { CarItem } from "../../../../../domain/entities/CarItem";
 
-jest.mock("../../../../../domain/repositories/CarsRepository"); // Mock do repositório
+jest.mock("../../../../../domain/repositories/CarsRepository");
 
 describe("UpdateCarService", () => {
   let carsRepositoryMock: jest.Mocked<CarsRepository>;
@@ -27,7 +26,7 @@ describe("UpdateCarService", () => {
     car.status = "ativo";
 
     const updateData: UpdateCarDTO = {
-      plate: "INVALID_PLATE", // Placa inválida
+      plate: "INVALID_PLATE",
       brand: "Tesla",
       model: "Model X",
       km: 25000,
@@ -37,7 +36,6 @@ describe("UpdateCarService", () => {
       items: ["teto solar", "camera traseira"],
     };
 
-    // Mock para o carro encontrado
     carsRepositoryMock.findById.mockResolvedValueOnce(car);
 
     await expect(updateCarService.execute("1", updateData)).rejects.toThrow(
@@ -62,12 +60,11 @@ describe("UpdateCarService", () => {
       model: "Model X",
       km: 25000,
       year: 2022,
-      price: -5000, // Preço negativo
+      price: -5000,
       status: "ativo",
       items: ["teto solar", "camera traseira"],
     };
 
-    // Mock para o carro encontrado
     carsRepositoryMock.findById.mockResolvedValueOnce(car);
 
     await expect(updateCarService.execute("1", updateData)).rejects.toThrow(
@@ -91,13 +88,12 @@ describe("UpdateCarService", () => {
       brand: "Tesla",
       model: "Model X",
       km: 25000,
-      year: 2013, // Ano inferior a 2014
+      year: 2013,
       price: 850000,
       status: "ativo",
       items: ["teto solar", "camera traseira"],
     };
 
-    // Mock para o carro encontrado
     carsRepositoryMock.findById.mockResolvedValueOnce(car);
 
     await expect(updateCarService.execute("1", updateData)).rejects.toThrow(
@@ -137,7 +133,6 @@ describe("UpdateCarService", () => {
     carWithSamePlate.price = 40000;
     carWithSamePlate.status = "ativo";
 
-    // Mock para o carro encontrado e outro carro com a mesma placa
     carsRepositoryMock.findById.mockResolvedValueOnce(car);
     carsRepositoryMock.findByPlate.mockResolvedValueOnce(carWithSamePlate);
 

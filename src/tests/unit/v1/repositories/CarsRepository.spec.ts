@@ -1,9 +1,9 @@
 import { Repository } from "typeorm";
-import { CarsRepository } from "./../../../../domain/repositories/CarsRepository";
-import { Car } from "./../../../../domain/entities/Car";
-import { AppDataSource } from "./../../../../infra/data-source";
-import { CreateCarDTO } from "./../../../../http/dtos/CreateCar.dto";
-import { UpdateCarDTO } from "./../../../../http/dtos/UpdateCar.dto";
+import { Car } from "../../../../domain/entities/Car";
+import { AppDataSource } from "../../../../infra/data-source";
+import { CreateCarDTO } from "../../../../http/dtos/CreateCar.dto";
+import { UpdateCarDTO } from "../../../../http/dtos/UpdateCar.dto";
+import { CarsRepository } from "../../../../domain/repositories/CarsRepository";
 
 jest.mock("../../../../infra/data-source", () => ({
   AppDataSource: {

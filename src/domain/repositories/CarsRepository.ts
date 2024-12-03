@@ -3,8 +3,8 @@ import Car from "../entities/Car";
 import { AppDataSource } from "../../infra/data-source";
 import { CreateCarDTO } from "../../http/dtos/CreateCar.dto";
 import { UpdateCarDTO } from "../../http/dtos/UpdateCar.dto";
-import { IPaginateCar } from "../../application/services/car/ListCarService";
 import { ListCarParams } from "../../application/params/ListCarsParams.type";
+import { IPaginateCar } from "./../../application/services/car/ListCarService";
 
 export class CarsRepository {
   private ormRepository: Repository<Car>;
