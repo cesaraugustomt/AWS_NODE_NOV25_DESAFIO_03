@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { CreateOrderService } from "../../../../application/services/order/CreateOrderService";
+import { CreateOrderService } from "./../../../../application/services/order/CreateOrderService";
+
 const OrderController = require("../../../../http/controller/OrderController");
 
 jest.mock("../../../../application/services/order/CreateOrderService");

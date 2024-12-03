@@ -1,7 +1,8 @@
-import CarsRepository from "../../../../../domain/repositories/CarsRepository";
-import ShowCarService from "../../../../../application/services/car/ShowCarService";
-import { Car } from "../../../../../domain/entities/Car";
-import { CarItem } from "../../../../../domain/entities/CarItem";
+import CarsRepository from "./../../../../../domain/repositories/CarsRepository";
+
+import { Car } from "./../../../../../domain/entities/Car";
+import { CarItem } from "./../../../../../domain/entities/CarItem";
+import ShowCarService from "./../../../../../application/services/car/ShowCarService";
 
 jest.mock("../../../../../domain/repositories/CarsRepository");
 

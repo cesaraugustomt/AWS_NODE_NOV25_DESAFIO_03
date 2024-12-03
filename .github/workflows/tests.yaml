@@ -4,7 +4,7 @@ on: pull_request
 
 jobs:
   jest:
-    name: Jest Ubuntu
+    name: Jest Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -13,6 +13,14 @@ jobs:
         with:
           node-version: "20.17.0"
 
-      - run: npm install
+      - run: npm ci
 
-      - run: npm run test
+      - run: ls -R
+
+      - run: npm run test -- --coverage
+
+      - name: Upload Coverage
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage/

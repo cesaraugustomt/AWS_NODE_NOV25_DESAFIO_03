@@ -32,7 +32,7 @@ describe("ListOrderService", () => {
         cep: null,
         city: null,
         state: null,
-        totalValue: 30000,
+        totalValue: 31000,
         initialDate: new Date(),
         finalDate: null,
       },

@@ -7,6 +7,7 @@ beforeAll(async () => {
   await orchestrator.waitForAllServices();
 });
 
+
 describe("Login (successfully)", () => {
   it("should login successfully with valid credentials", async () => {
     const response = await request(API_URL).post("/login").send({

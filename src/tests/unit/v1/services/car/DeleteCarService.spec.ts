@@ -1,6 +1,6 @@
-import { DeleteCarService } from "../../../../../application/services/car/DeleteCarService";
-import { CarsRepository } from "../../../../../domain/repositories/CarsRepository";
-import { OrderRepository } from "../../../../../domain/repositories/OrderRepository";
+import { CarsRepository } from "./../../../../../domain/repositories/CarsRepository";
+import { OrderRepository } from "./../../../../../domain/repositories/OrderRepository";
+import { DeleteCarService } from "./../../../../../application/services/car/DeleteCarService";
 
 jest.mock("../../../../../domain/repositories/CarsRepository", () => ({
   CarsRepository: jest.fn().mockImplementation(() => ({
