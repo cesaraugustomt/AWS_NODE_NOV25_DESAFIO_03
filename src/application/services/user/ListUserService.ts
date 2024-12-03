@@ -1,16 +1,16 @@
-import { ListUserParams } from '../../params/ListUserParams.type';
-import { AppDataSource } from '../../../infra/data-source';
-import User from '../../../domain/entities/User';
+import { ListUserParams } from "../../params/ListUserParams.type";
+import { AppDataSource } from "../../../infra/data-source";
+import User from "../../../domain/entities/User";
 
 class ListUserService {
   async execute(params: ListUserParams) {
     const userRepository = AppDataSource.getRepository(User);
-    const queryBuilder = userRepository.createQueryBuilder('user');
+    const queryBuilder = userRepository.createQueryBuilder("user");
     // .withDeleted();
 
     if (params.name) {
       queryBuilder
-        .andWhere('user.full_name LIKE :name', {
+        .andWhere("user.full_name LIKE :name", {
           name: `%${params.name}%`,
         })
         .withDeleted();
@@ -18,23 +18,23 @@ class ListUserService {
 
     if (params.email) {
       queryBuilder
-        .andWhere('user.email LIKE :email', {
+        .andWhere("user.email LIKE :email", {
           email: `%${params.email}%`,
         })
         .withDeleted();
     }
 
     if (params.isDeleted) {
-      queryBuilder.andWhere('user.deletedAt IS NOT NULL').withDeleted();
+      queryBuilder.andWhere("user.deletedAt IS NOT NULL").withDeleted();
     } else if (params.isDeleted === false) {
-      queryBuilder.andWhere('user.deletedAt IS NULL');
+      queryBuilder.andWhere("user.deletedAt IS NULL");
     }
 
     if (params.orderBy) {
       const orderFields = Array.isArray(params.orderBy)
         ? params.orderBy
         : [params.orderBy];
-      const orderDirection = params.orderDirection || 'ASC';
+      const orderDirection = params.orderDirection || "ASC";
 
       orderFields.forEach((field) => {
         queryBuilder.addOrderBy(`user.${field}`, orderDirection).withDeleted();
