@@ -29,8 +29,8 @@ describe("SelectUserByIdService", () => {
     const userId = "123";
     const mockUser: User = {
       id: userId,
-      full_name: "John Doe",
-      email: "johndoe@example.com",
+      full_name: "User One",
+      email: "userone@example.com",
       password: "hashedpassword",
       createdAt: new Date(),
       updatedAt: new Date(),
