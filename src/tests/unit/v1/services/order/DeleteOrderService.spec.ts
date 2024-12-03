@@ -74,7 +74,7 @@ describe("DeleteOrderService", () => {
     };
     const mockCar: Car = {
       id: "1",
-      plate: "ABC1234",
+      plate: "ABC1232",
       brand: "Toyota",
       model: "Corolla",
       year: 2020,
