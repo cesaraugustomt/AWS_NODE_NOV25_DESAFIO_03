@@ -218,7 +218,7 @@ describe("ClientsRepository", () => {
         birthday: new Date("1990-01-01"),
         cpf: "12345678901",
         email: "joao.silva@example.com",
-        phone: "987654321",
+        phone: "917654321",
         createdAt: new Date(),
         deletedAt: null,
         orders: [],
