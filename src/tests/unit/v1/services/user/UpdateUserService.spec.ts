@@ -34,8 +34,8 @@ describe("UpdateUserService", () => {
     await expect(
       updateUserService.execute({
         id: "",
-        full_name: "John Doe",
-        email: "john@example.com",
+        full_name: "User One",
+        email: "userone@example.com",
         password: "currentPassword",
         newPassword: "newPassword123",
       })
@@ -46,8 +46,8 @@ describe("UpdateUserService", () => {
     await expect(
       updateUserService.execute({
         id: "123",
-        full_name: "John Doe",
-        email: "john@example.com",
+        full_name: "User One",
+        email: "userone@example.com",
         password: "",
         newPassword: "newPassword123",
       })
@@ -60,8 +60,8 @@ describe("UpdateUserService", () => {
     await expect(
       updateUserService.execute({
         id: "123",
-        full_name: "John Doe",
-        email: "john@example.com",
+        full_name: "User One",
+        email: "userone@example.com",
         password: "currentPassword",
         newPassword: "newPassword123",
       })
@@ -108,8 +108,8 @@ describe("UpdateUserService", () => {
     await expect(
       updateUserService.execute({
         id: "123",
-        full_name: "John Doe",
-        email: "john@example.com",
+        full_name: "User One",
+        email: "userone@example.com",
         password: "currentPassword",
         newPassword: "newPassword123",
       })
