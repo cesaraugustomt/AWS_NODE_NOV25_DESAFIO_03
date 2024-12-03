@@ -1,20 +1,20 @@
-import { Request, Response } from 'express';
-import { CreateUserDto } from '../dtos/CreateUser.dto';
-import { ListUserService } from '../../application/services/user/ListUserService';
-import { CreateUserService } from '../../application/services/user/CreateUseService';
-import { UpdateUserDto } from '../dtos/UpdateUser.dto';
-import { UpdateUserService } from '../../application/services/user/UpdateUserService';
-import { DeleteUserService } from '../../application/services/user/DeleteUserService';
-import { SelectUserByIdService } from '../../application/services/user/SelectUserByIdService';
+import { Request, Response } from "express";
+import { CreateUserDto } from "../dtos/CreateUser.dto";
+import { ListUserService } from "../../application/services/user/ListUserService";
+import { CreateUserService } from "../../application/services/user/CreateUseService";
+import { UpdateUserDto } from "../dtos/UpdateUser.dto";
+import { UpdateUserService } from "../../application/services/user/UpdateUserService";
+import { DeleteUserService } from "../../application/services/user/DeleteUserService";
+import { SelectUserByIdService } from "../../application/services/user/SelectUserByIdService";
 
 class UserController {
   public async index(req: Request, res: Response): Promise<Response> {
     const params = {
       name: req.query.name as string,
       email: req.query.email as string,
-      isDeleted: req.query.isDeleted === 'true' ? true : undefined,
-      orderBy: req.query.orderBy as 'full_name' | 'createdAt' | 'deletedAt',
-      orderDirection: req.query.orderDirection as 'ASC' | 'DESC',
+      isDeleted: req.query.isDeleted === "true" ? true : undefined,
+      orderBy: req.query.orderBy as "full_name" | "createdAt" | "deletedAt",
+      orderDirection: req.query.orderDirection as "ASC" | "DESC",
       page: parseInt(req.query.page as string) || 1,
       pageSize: parseInt(req.query.pageSize as string) || 10,
     };
@@ -37,7 +37,7 @@ class UserController {
       if (error instanceof Error) {
         return res.status(400).json({ error: error.message });
       }
-      return res.status(400).json({ error: 'Um erro inesperado aconteceu.' });
+      return res.status(400).json({ error: "Um erro inesperado aconteceu." });
     }
   }
 
@@ -57,7 +57,7 @@ class UserController {
       if (error instanceof Error) {
         return res.status(400).json({ error: error.message });
       }
-      return res.status(400).json({ error: 'Um erro inesperado aconteceu.' });
+      return res.status(400).json({ error: "Um erro inesperado aconteceu." });
     }
   }
 
@@ -77,27 +77,30 @@ class UserController {
         newPassword,
       });
 
-      return res.json(resposta);
+      // Definir o status antes de retornar a resposta
+      return res.status(200).json(resposta); // Explicitamente definindo o status 200
     } catch (error) {
       if (error instanceof Error) {
         return res.status(400).json({ error: error.message });
       }
-      return res.status(400).json({ error: 'Um erro inesperado aconteceu.' });
+      return res.status(400).json({ error: "Um erro inesperado aconteceu." });
     }
   }
 
   public async delete(req: Request, res: Response) {
     const { id } = req.params;
+
     const deleteUserService = new DeleteUserService();
 
     try {
       const resposta = await deleteUserService.execute({ id });
-      return res.json(resposta);
+
+      return res.status(200).json(resposta);
     } catch (error) {
       if (error instanceof Error) {
         return res.status(400).json({ error: error.message });
       }
-      return res.status(400).json({ error: 'Um erro inesperado aconteceu.' });
+      return res.status(400).json({ error: "Um erro inesperado aconteceu." });
     }
   }
 
@@ -113,7 +116,7 @@ class UserController {
       if (error instanceof Error) {
         return res.status(404).json({ error: error.message });
       }
-      return res.status(400).json({ error: 'Um erro inesperado aconteceu.' });
+      return res.status(400).json({ error: "Um erro inesperado aconteceu." });
     }
   }
 }
