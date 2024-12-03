@@ -77,10 +77,10 @@ describe("OrderRepository", () => {
     it("should find orders by clientId", async () => {
       const mockClient = {
         id: "1",
-        name: "John Doe",
+        name: "User One",
         birthday: new Date("1990-01-01"),
         cpf: "12345678901",
-        email: "johndoe@example.com",
+        email: "userone@example.com",
         phone: "9876543210",
         createdAt: new Date(),
         deletedAt: null,
