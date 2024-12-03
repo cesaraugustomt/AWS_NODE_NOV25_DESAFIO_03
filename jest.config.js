@@ -7,7 +7,7 @@
 const config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
-
+  testTimeout: 60000,
   // Stop running tests after `n` failures
   // bail: 0,
 
@@ -18,10 +18,16 @@ const config = {
   // clearMocks: false,
 
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: [
+    "src/**/*.ts", // Inclui todos os arquivos TypeScript na pasta src
+    "!src/**/*.test.ts", // Exclui arquivos de teste
+    "!src/**/index.ts", // Exclui arquivos de índice (se necessário)
+    "!src/**/*.d.ts", // Exclui definições de tipos
+    "!src/infra/**", // Exclui definições de tipos
+  ],
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: undefined,
@@ -32,7 +38,7 @@ const config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: 'v8',
+  coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -77,19 +83,23 @@ const config = {
   // ],
 
   // An array of file extensions your modules use
-  // moduleFileExtensions: [
-  //   "js",
-  //   "mjs",
-  //   "cjs",
-  //   "jsx",
-  //   "ts",
-  //   "tsx",
-  //   "json",
-  //   "node"
-  // ],
+  moduleFileExtensions: [
+    "js",
+    "mjs",
+    "cjs",
+    "jsx",
+    "ts",
+    "tsx",
+    "json",
+    "node",
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  // moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+  //   prefix: "<rootDir>/",
+  // }),
+
+  modulePaths: ["<rootDir>/src"],
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -101,7 +111,8 @@ const config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  // preset: undefined,
+  preset: "ts-jest", // Usa ts-jest para compilar TypeScript
+  testEnvironment: "node",
 
   // Run tests from one or more projects
   // projects: undefined,
