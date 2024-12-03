@@ -7,7 +7,7 @@
     "start": "ts-node ./src/index.ts",
     "dev": "npm run services:up && nodemon --exec ts-node ./src/index.ts",
     "start:dev": "npm run services:up && npm run wait-for-mariadb && npm run migration:run && npm run seed:run",
-    "test:ci": "npm run services:up && concurrently -n nodejs,jest --hide nodejs -k -s command-jest \"npm start\" \"jest --runInBand --verbose\"",
+    "test:ci": "npm run start:dev && concurrently -n nodejs,jest --hide nodejs -k -s command-jest \"npm start\" \"jest --runInBand --verbose\"",
     "test": "jest --runInBand ",
     "test:watch": "jest --watchAll --runInBand",
     "lint": "eslint .",
