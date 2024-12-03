@@ -24,7 +24,7 @@ describe("DeleteUserService", () => {
     jest.clearAllMocks();
   });
 
-  it("should throw an error if user is not found", async () => {
+  it("should throw an error if user not found", async () => {
     mockRepository.findOne.mockResolvedValue(null);
 
     await expect(
